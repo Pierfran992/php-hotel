@@ -7,8 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Hotel</title>
 
+    <!-- style css -->
+    <style>
+        .ms_container {
+            width: fit-content;
+            padding-bottom: 20px;
+            border-bottom: solid 1px #000000;
+        }
+    </style>
     <!-- php data -->
     <?php
+    // array contenente le varie info sugli Hotel
     $hotels = [
         [
             'name' => 'Hotel Belvedere',
@@ -51,7 +60,24 @@
 </head>
 
 <body>
+    <?php
+    // creo il ciclo foreach per stampare le info sugli hotel
+    foreach ($hotels as $hotel) {
+        // creo le variabili che avranno come varole la stringa contenuta nella proprietà dell'array $hotel
+        $name = $hotel['name'];
+        $description = $hotel['description'];
+        $parking = $hotel['parking'] === true ? "Si" : "No";
+        $vote = $hotel['vote'];
+        $distanceToCenter = $hotel['distance_to_center'];
 
+        // stampo in pagina le informazioni
+        echo "<div class='ms_container'>" . "<h3>" . $name . "</h3>"
+            . "<p>" . $description . "</p>"
+            . "<span>" . "Parcheggio: " . $parking . "</span>" . "<br>"
+            . "<span>" . "Voto: " . $vote . "</span>" . "<br>"
+            . "<span>" . "Distanza dal Centro: " . $distanceToCenter . "</span>" . "<br>" . "</div>";
+    };
+    ?>
 </body>
 
 </html>
