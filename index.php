@@ -65,6 +65,7 @@
 
 <body>
     <?php
+    /* 
     // creo il ciclo foreach per stampare le info sugli hotel
     foreach ($hotels as $hotel) {
         // creo le variabili che avranno come varole la stringa contenuta nella proprietà dell'array $hotel
@@ -80,8 +81,39 @@
             . "<span>" . "Parcheggio: " . $parking . "</span>" . "<br>"
             . "<span>" . "Voto: " . $vote . "</span>" . "<br>"
             . "<span>" . "Distanza dal Centro: " . $distanceToCenter . "</span>" . "<br>" . "</div>";
-    };
+    };*/
     ?>
+    <!-- tabella in cui stampare i dati degli hotel -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Parcheggio</th>
+                <th scope="col">Voto</th>
+                <th scope="col">Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($hotels as $hotel) {
+                $name = $hotel['name'];
+                $description = $hotel['description'];
+                $parking = $hotel['parking'] === true ? "Si" : "No";
+                $vote = $hotel['vote'];
+                $distanceToCenter = $hotel['distance_to_center'];
+
+                echo "<tr>" . "<th scopre='row'>" . $name . "</th>"
+                    . "<td>" . $description . "</td>"
+                    . "<td>" . $parking . "</td>"
+                    . "<td>" . $vote . "</td>"
+                    . "<td>" . $distanceToCenter . "Km" . "</td>" . "</tr>";
+            };
+            ?>
+        </tbody>
+    </table>
+
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
